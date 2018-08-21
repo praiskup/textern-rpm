@@ -9,7 +9,7 @@
 
 Name:           textern
 Version:        0.%posttag
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Firefox add-on for editing text in your favorite external editor
 
 License:        GPLv3
@@ -19,8 +19,6 @@ URL:            https://github.com/jlebon/textern
 Source0:        jlebon-textern-%gitrev.tar.gz
 
 Patch0:         textern-5339fb6-build.patch
-
-BuildArch:      noarch
 
 Requires:       mozilla-filesystem
 Requires:       python3-inotify_simple
@@ -62,6 +60,9 @@ make native-install \
 
 
 %changelog
+* Tue Aug 21 2018 Pavel Raiskup <praiskup@redhat.com> - 0.git5339fb6-3
+- actually drop noarch
+
 * Tue Aug 21 2018 Pavel Raiskup <praiskup@redhat.com> - 0.git5339fb6-2
 - s/simple_inotify/inotify_simple/
 
