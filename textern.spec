@@ -1,6 +1,6 @@
-%global gitrev          5339fb6
-%global posttag         git%gitrev
-%global snapshot        %version-%posttag
+%global commit          5339fb6ae33c72c27f2769d0fc3dabb6191b5d3a
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global snapshotdate    20180821
 %global debug_package   %nil
 
 # this enforces us to create non-noarch package
@@ -9,16 +9,17 @@
 %global __brp_python_bytecompile :
 
 Name:           textern
-Version:        0.%posttag
-Release:        3%{?dist}
+Version:        0
+Release:        0.3.%{snapshotdate}git%shortcommit%{?dist}
 Summary:        Firefox add-on for editing text in your favorite external editor
 
 License:        GPLv3
 URL:            https://github.com/jlebon/textern
 
-# curl https://api.github.com/repos/jlebon/textern/tarball/5339fb6 > tarball
-Source0:        jlebon-textern-%gitrev.tar.gz
+Source0:        %url/archive/%{shortcommit}/%{name}-%{commit}.tar.gz
 
+# Original Makefile's LIBEXEC doesn't respect $(DESTDIR)
+# https://github.com/jlebon/textern/pull/36
 Patch0:         textern-5339fb6-build.patch
 
 Requires:       mozilla-filesystem
@@ -38,7 +39,7 @@ used by Add-on named "textern".  Please install the Add-on manually.
 
 
 %prep
-%autosetup -p1 -n jlebon-textern-%gitrev
+%autosetup -p1 -n %name-%commit
 
 
 %build
@@ -61,6 +62,9 @@ make native-install \
 
 
 %changelog
+* Tue Aug 21 2018 Pavel Raiskup <praiskup@redhat.com> - 0-0.3.20180821git5339fb6
+- fix versioning and other problems spotted by  Robert-André Mauchin (rhbz#1619528)
+
 * Tue Aug 21 2018 Pavel Raiskup <praiskup@redhat.com> - 0.git5339fb6-3
 - actually drop noarch, but don't generate debuginfo
 
