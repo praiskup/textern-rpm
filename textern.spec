@@ -1,6 +1,7 @@
 %global gitrev          5339fb6
-%global posttag         git%{gitrev}
-%global snapshot        %{version}-%{posttag}
+%global posttag         git%gitrev
+%global snapshot        %version-%posttag
+%global debug_package   %nil
 
 # this enforces us to create non-noarch package
 %global native_dir      %_libdir/mozilla/native-messaging-hosts
@@ -61,7 +62,7 @@ make native-install \
 
 %changelog
 * Tue Aug 21 2018 Pavel Raiskup <praiskup@redhat.com> - 0.git5339fb6-3
-- actually drop noarch
+- actually drop noarch, but don't generate debuginfo
 
 * Tue Aug 21 2018 Pavel Raiskup <praiskup@redhat.com> - 0.git5339fb6-2
 - s/simple_inotify/inotify_simple/
