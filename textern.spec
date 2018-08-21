@@ -9,7 +9,7 @@
 
 Name:           textern
 Version:        0.%posttag
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Firefox add-on for editing text in your favorite external editor
 
 License:        GPLv3
@@ -23,7 +23,7 @@ Patch0:         textern-5339fb6-build.patch
 BuildArch:      noarch
 
 Requires:       mozilla-filesystem
-Requires:       python3-simple_inotify
+Requires:       python3-inotify_simple
 
 BuildRequires:  make
 BuildRequires:  python3-devel
@@ -62,5 +62,8 @@ make native-install \
 
 
 %changelog
+* Tue Aug 21 2018 Pavel Raiskup <praiskup@redhat.com> - 0.git5339fb6-2
+- s/simple_inotify/inotify_simple/
+
 * Tue Aug 21 2018 Pavel Raiskup <praiskup@redhat.com> - 0.git5339fb6-1
 - initial rpm packaging
