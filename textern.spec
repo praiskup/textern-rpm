@@ -63,7 +63,8 @@ make native-install \
 
 %changelog
 * Tue Aug 21 2018 Pavel Raiskup <praiskup@redhat.com> - 0-0.3.20180821git5339fb6
-- fix versioning and other problems spotted by  Robert-André Mauchin (rhbz#1619528)
+- fix versioning and other problems spotted by Robert-André Mauchin
+  and Lukáš Tyrychtr (rhbz#1619528)
 
 * Tue Aug 21 2018 Pavel Raiskup <praiskup@redhat.com> - 0.git5339fb6-3
 - actually drop noarch, but don't generate debuginfo
